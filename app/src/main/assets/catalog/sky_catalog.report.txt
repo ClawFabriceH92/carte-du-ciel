@@ -1,0 +1,7 @@
+Catalogue carte-du-ciel
+Source étoiles : hyg_v41_subset.csv (15696 lignes)
+Magnitude limite : 6.5
+Étoiles retenues : 9028 (dont 8920 de magnitude <= 6.5, 464 avec nom propre, 757 dans des figures)
+Indice de couleur inconnu : 41
+Constellations : 88 ; tracés : 150 ; sommets : 893
+Appariement des sommets : écart maximal 0.0045°, sommets hors tolérance (0.05°) : 0
