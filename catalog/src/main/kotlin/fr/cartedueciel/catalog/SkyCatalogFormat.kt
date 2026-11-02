@@ -14,7 +14,7 @@ import java.io.OutputStream
  *           nbConstellations u16, nbTracés i32, nbSommets i32, magnitudeLimite f32, 8 octets réservés
  * chaînes  : nbChaînes × (longueur u16 + octets UTF-8) ; la chaîne 0 est toujours vide
  * étoiles  : nbÉtoiles × { ra f32, dec f32, mag×1000 i16, ci×1000 i16, hip i32, hd i32,
- *            constellation i8, bayer u8, exposant u8, flamsteed u16, nomPropre u16 } (27 octets)
+ *            constellation i8, bayer u8, exposant u8, flamsteed u16, nomPropre u16, distance_pc f32 } (31 octets)
  * constell.: nbConstellations × { abbr u16, latin u16, génitif u16, fr u16, en u16,
  *            raLibellé f32, decLibellé f32, rang u8, premierTracé i32, nbTracés u16 }
  * tracés   : nbTracés × { constellation u16, nbSommets u16, nbSommets × index i32 }
@@ -51,12 +51,14 @@ object SkyCatalogFormat {
         val hip = IntArray(starCount); val hd = IntArray(starCount)
         val con = ByteArray(starCount); val bayer = ByteArray(starCount); val sup = ByteArray(starCount)
         val flam = ShortArray(starCount); val name = ShortArray(starCount)
+        val dist = FloatArray(starCount)
         for (i in 0 until starCount) {
             ra[i] = din.readFloat(); dec[i] = din.readFloat()
             mag[i] = din.readShort(); ci[i] = din.readShort()
             hip[i] = din.readInt(); hd[i] = din.readInt()
             con[i] = din.readByte(); bayer[i] = din.readByte(); sup[i] = din.readByte()
             flam[i] = din.readShort(); name[i] = din.readShort()
+            dist[i] = din.readFloat()
         }
 
         val constellations = ArrayList<Constellation>(constellationCount)
@@ -83,7 +85,7 @@ object SkyCatalogFormat {
         return SkyCatalog(
             buildMagnitudeLimit = magLimit,
             strings = strings,
-            stars = StarTable(ra, dec, mag, ci, hip, hd, con, bayer, sup, flam, name),
+            stars = StarTable(ra, dec, mag, ci, hip, hd, con, bayer, sup, flam, name, dist),
             constellations = constellations,
             polylines = polylines,
         )
@@ -121,6 +123,7 @@ object SkyCatalogFormat {
             dout.writeInt(s.hip[i]); dout.writeInt(s.hd[i])
             dout.writeByte(s.constellation[i].toInt()); dout.writeByte(s.bayer[i].toInt()); dout.writeByte(s.bayerSuperscript[i].toInt())
             dout.writeShort(s.flamsteed[i].toInt()); dout.writeShort(s.properNameId[i].toInt())
+            dout.writeFloat(s.distancePc[i])
         }
         for (c in catalog.constellations) {
             dout.writeShort(sid(c.abbreviation)); dout.writeShort(sid(c.latinName)); dout.writeShort(sid(c.genitive))

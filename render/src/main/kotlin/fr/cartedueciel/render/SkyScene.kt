@@ -83,8 +83,18 @@ class SceneSnapshot(
     }
 }
 
-/** Vue courante : matrice de vue (ENU → caméra, 4×4 column-major) et champ vertical. */
-class ViewState(val view: FloatArray, val fovYDeg: Float) {
+/**
+ * Vue courante : matrice de vue (ENU → caméra, 4×4 column-major), champ vertical, et
+ * éventuellement l'objet visé à mettre en évidence (anneau) et l'objet recherché (anneau de guidage).
+ */
+class ViewState(
+    val view: FloatArray,
+    val fovYDeg: Float,
+    /** Direction ENU de l'objet au réticule, ou null. */
+    val highlightEnu: FloatArray? = null,
+    /** Direction ENU de l'objet recherché, ou null. */
+    val guideEnu: FloatArray? = null,
+) {
     companion object {
         val DEFAULT = ViewState(
             floatArrayOf(1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f),

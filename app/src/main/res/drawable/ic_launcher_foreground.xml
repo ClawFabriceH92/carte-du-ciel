@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Étoile à quatre branches et ligne d'horizon, sur fond nuit (fond fourni par l'icône adaptative). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFF4D6"
+        android:pathData="M54,22 L58.5,47.5 L84,52 L58.5,56.5 L54,82 L49.5,56.5 L24,52 L49.5,47.5 Z" />
+    <path
+        android:fillColor="#9BB7FF"
+        android:pathData="M74,30 L75.5,35.5 L81,37 L75.5,38.5 L74,44 L72.5,38.5 L67,37 L72.5,35.5 Z" />
+    <path
+        android:fillColor="#9BB7FF"
+        android:pathData="M32,34 L33,37 L36,38 L33,39 L32,42 L31,39 L28,38 L31,37 Z" />
+    <path
+        android:strokeColor="#5C7CFA"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M22,86 Q54,72 86,86" />
+</vector>

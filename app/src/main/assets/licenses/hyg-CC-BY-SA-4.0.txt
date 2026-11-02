@@ -1,0 +1,13 @@
+HYG Database v4.1 — David Nash (astronexus.com)
+
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+International License (CC BY-SA 4.0).
+
+Texte intégral de la licence : https://creativecommons.org/licenses/by-sa/4.0/legalcode
+Résumé lisible : https://creativecommons.org/licenses/by-sa/4.0/
+
+Le fichier d'étoiles embarqué dans cette application (catalog/sky_catalog.bin) est
+dérivé de cette base (sélection des étoiles de magnitude <= 6,5, des étoiles nommées
+et des étoiles des figures de constellations ; conversion en format binaire). Il est
+diffusé sous la même licence CC BY-SA 4.0. Les sources et le script de conversion sont
+publiés avec le code de l'application.

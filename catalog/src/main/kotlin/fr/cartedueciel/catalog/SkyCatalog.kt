@@ -70,8 +70,13 @@ class StarTable(
     val flamsteed: ShortArray,
     /** Identifiant de chaîne du nom propre ou 0. */
     val properNameId: ShortArray,
+    /** Distance en parsecs ; 0 ou >= 100 000 si inconnue (convention HYG). */
+    val distancePc: FloatArray,
 ) {
     val size: Int get() = raRad.size
+
+    /** Distance en parsecs si elle est connue, sinon null. */
+    fun distancePcOrNull(i: Int): Double? = distancePc[i].toDouble().let { if (it <= 0.0 || it >= 100_000.0) null else it }
 
     /** Vecteurs unitaires J2000 (x, y, z entrelacés), calculés une fois. */
     val unitVectors: FloatArray by lazy {
@@ -126,6 +131,9 @@ class Star(val catalog: SkyCatalog, val index: Int) {
     val colorIndex: Double get() = t.colorIndex(index)
     val hip: Int get() = t.hip[index]
     val hd: Int get() = t.hd[index]
+    val distancePc: Double? get() = t.distancePcOrNull(index)
+    /** Distance en années-lumière (1 pc = 3,2616 al) si connue. */
+    val distanceLightYears: Double? get() = distancePc?.let { it * 3.26156 }
     val constellation: Constellation? get() = t.constellation[index].toInt().let { if (it < 0) null else catalog.constellations[it] }
     val properName: String? get() = t.properNameId[index].toInt().let { if (it <= 0) null else catalog.strings[it] }
     val unitVector: Vec3 get() = t.unitVector(index)

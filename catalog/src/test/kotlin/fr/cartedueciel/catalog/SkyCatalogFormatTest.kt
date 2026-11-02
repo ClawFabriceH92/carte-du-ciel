@@ -24,6 +24,7 @@ class SkyCatalogFormatTest {
             bayerSuperscript = byteArrayOf(0, 0, 0),
             flamsteed = shortArrayOf(3, 58, 0),
             properNameId = shortArrayOf(1, 12, 0),
+            distancePc = floatArrayOf(7.68f, 152.67f, 100000f),
         )
         val cons = listOf(
             Constellation(0, "Lyr", "Lyra", "Lyrae", "Lyre", "Lyra", 4.9f, 0.6f, 1, 0, 1),
@@ -52,7 +53,11 @@ class SkyCatalogFormatTest {
             assertEquals(src.stars.bayer[i], back.stars.bayer[i])
             assertEquals(src.stars.flamsteed[i], back.stars.flamsteed[i])
             assertEquals(src.stars.properNameId[i], back.stars.properNameId[i])
+            assertEquals(src.stars.distancePc[i], back.stars.distancePc[i], 0f)
         }
+        assertEquals(7.68, back.star(0).distancePc!!, 1e-6)
+        assertEquals(25.05, back.star(0).distanceLightYears!!, 0.01)
+        assertNull(back.star(2).distancePc)
         assertEquals(2, back.constellations.size)
         assertEquals("Lyre", back.constellations[0].nameFr)
         assertEquals("Orionis", back.constellations[1].genitive)

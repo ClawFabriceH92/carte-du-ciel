@@ -106,6 +106,7 @@ class SkyRenderer(context: Context) : GLSurfaceView.Renderer {
         drawStars(s, night)
         drawSprites(s, night)
         drawLabels(s, night)
+        drawRings(v, night)
 
         frameListener?.invoke(System.nanoTime() - start)
     }
@@ -203,6 +204,25 @@ class SkyRenderer(context: Context) : GLSurfaceView.Renderer {
             tint[0] = item.rgb[0]; tint[1] = item.rgb[1]; tint[2] = item.rgb[2]; tint[3] = 1f
             val n = rotatedQuad(quadArray, 0, p[0], p[1], half, angle)
             spriteProgram.draw(width, height, texture, GlUtil.floatBuffer(quadArray, n * 4), n, tint, night)
+        }
+    }
+
+    /** Anneaux de mise en évidence : objet visé (petit, discret) et objet recherché (plus grand). */
+    private fun drawRings(v: ViewState, night: Boolean) {
+        val p = FloatArray(2)
+        v.highlightEnu?.let { e ->
+            if (project(e[0], e[1], e[2], p)) {
+                tint[0] = 1f; tint[1] = 1f; tint[2] = 1f; tint[3] = 0.9f
+                val n = rotatedQuad(quadArray, 0, p[0], p[1], 14f * density, 0f)
+                spriteProgram.draw(width, height, sprites.ring, GlUtil.floatBuffer(quadArray, n * 4), n, tint, night)
+            }
+        }
+        v.guideEnu?.let { e ->
+            if (project(e[0], e[1], e[2], p)) {
+                tint[0] = 1f; tint[1] = 0.85f; tint[2] = 0.3f; tint[3] = 1f
+                val n = rotatedQuad(quadArray, 0, p[0], p[1], 24f * density, 0f)
+                spriteProgram.draw(width, height, sprites.ring, GlUtil.floatBuffer(quadArray, n * 4), n, tint, night)
+            }
         }
     }
 

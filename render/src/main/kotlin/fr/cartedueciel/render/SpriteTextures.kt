@@ -17,11 +17,13 @@ internal class SpriteTextures {
     var sun = 0; private set
     var planet = 0; private set
     var moon = 0; private set
+    var ring = 0; private set
     private var moonFraction = -1f
 
     fun create() {
         sun = upload(sunBitmap(), 0)
         planet = upload(planetBitmap(), 0)
+        ring = upload(ringBitmap(), 0)
         moon = upload(moonBitmap(1f), 0)
         moonFraction = 1f
     }
@@ -57,6 +59,21 @@ internal class SpriteTextures {
             floatArrayOf(0f, 0.45f, 0.6f, 1f), Shader.TileMode.CLAMP,
         )
         c.drawCircle(r, r, r, p)
+        return b
+    }
+
+    /** Anneau fin (mise en évidence de l'objet visé ou recherché). */
+    private fun ringBitmap(): Bitmap {
+        val s = SIZE
+        val b = Bitmap.createBitmap(s, s, Bitmap.Config.ARGB_8888)
+        val c = Canvas(b)
+        val r = s / 2f
+        val p = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            style = Paint.Style.STROKE
+            strokeWidth = s / 16f
+            color = Color.WHITE
+        }
+        c.drawCircle(r, r, r - s / 16f, p)
         return b
     }
 

@@ -42,6 +42,7 @@ data class HygStar(
     val decDeg: Double,
     val mag: Double,
     val ci: Double,
+    val distPc: Double,
     val bayer: String,
     val flam: Int,
     val con: String,
@@ -122,6 +123,7 @@ object CatalogBuilder {
         val hip = IntArray(n); val hd = IntArray(n)
         val con = ByteArray(n); val bayer = ByteArray(n); val sup = ByteArray(n)
         val flam = ShortArray(n); val name = ShortArray(n)
+        val dist = FloatArray(n)
         var namedCount = 0
         var unknownColor = 0
         for ((i, s) in selected.withIndex()) {
@@ -135,12 +137,13 @@ object CatalogBuilder {
             bayer[i] = (b?.first ?: 0).toByte(); sup[i] = (b?.second ?: 0).toByte()
             flam[i] = s.flam.coerceIn(0, Short.MAX_VALUE.toInt()).toShort()
             if (s.proper.isNotEmpty()) { name[i] = sid(s.proper).toShort(); namedCount++ }
+            dist[i] = s.distPc.toFloat()
         }
 
         val catalog = SkyCatalog(
             buildMagnitudeLimit = magnitudeLimit.toFloat(),
             strings = strings,
-            stars = StarTable(ra, dec, mag, ci, hip, hd, con, bayer, sup, flam, name),
+            stars = StarTable(ra, dec, mag, ci, hip, hd, con, bayer, sup, flam, name, dist),
             constellations = constellations,
             polylines = polylines,
         )
@@ -180,6 +183,7 @@ object CatalogBuilder {
                     decDeg = field(row, "dec").toDouble(),
                     mag = mag,
                     ci = field(row, "ci").toDoubleOrNull() ?: Double.NaN,
+                    distPc = field(row, "dist").toDoubleOrNull() ?: 0.0,
                     bayer = field(row, "bayer"),
                     flam = field(row, "flam").toIntOrNull() ?: 0,
                     con = field(row, "con"),

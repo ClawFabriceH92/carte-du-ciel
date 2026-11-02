@@ -1,0 +1,11 @@
+World Magnetic Model 2025 (WMM2025)
+
+Produit par la NOAA / National Centers for Environmental Information (NCEI) et le
+British Geological Survey (BGS), pour les ministères de la Défense des États-Unis et du
+Royaume-Uni. Les coefficients du modèle (WMM2025.COF, époque 2025.0, valide jusqu'au
+31 décembre 2029) et le logiciel de référence sont dans le domaine public.
+
+Source des coefficients utilisée : module Python officiel « wmm-calculator » (NOAA NCEI,
+dépôt github.com/CIRES-Geomagnetism/wmm), identiques au fichier WMM_2025.COF du paquet
+pygeomag. L'implémentation Kotlin de cette application a été vérifiée contre la table
+de valeurs de test officielle WMM2025 (12 cas : écart < 0,1 nT et < 0,01°).

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Carte du ciel</string>
+
+    <!-- Accueil -->
+    <string name="onboarding_title">Une fenêtre sur le ciel</string>
+    <string name="onboarding_principle">Levez le téléphone : l\'écran montre les étoiles, constellations et planètes situées derrière l\'appareil, calculées à partir de votre position, de l\'heure et de l\'orientation du téléphone. Le ciel n\'est pas filmé mais calculé : cela fonctionne aussi de jour, en intérieur ou par temps couvert.</string>
+    <string name="onboarding_location_title">Où êtes-vous ?</string>
+    <string name="onboarding_location_text">La position approximative (à un kilomètre près) suffit pour calculer le ciel. Rien ne quitte votre téléphone : l\'application n\'a pas d\'accès à Internet.</string>
+    <string name="onboarding_location_allow">Utiliser ma position</string>
+    <string name="onboarding_location_manual">Choisir une ville</string>
+    <string name="onboarding_compass_title">Calibrer la boussole</string>
+    <string name="onboarding_compass_text">Décrivez lentement un « 8 » dans l\'air avec le téléphone, en le tournant dans tous les sens, jusqu\'à ce que l\'indicateur de précision passe au vert. Éloignez-vous des objets métalliques et des aimants (coques, voitures).</string>
+    <string name="onboarding_no_sensor">Ce téléphone n\'a pas de capteur d\'orientation exploitable : la carte s\'utilise au doigt (glisser pour tourner, pincer pour zoomer).</string>
+    <string name="action_next">Continuer</string>
+    <string name="action_start">Voir le ciel</string>
+    <string name="action_skip">Plus tard</string>
+    <string name="action_back">Retour</string>
+    <string name="action_close">Fermer</string>
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Annuler</string>
+    <string name="action_validate">Valider</string>
+
+    <!-- Vue ciel -->
+    <string name="fab_search">Rechercher un objet</string>
+    <string name="fab_layers">Couches affichées</string>
+    <string name="fab_night_on">Activer le mode nuit</string>
+    <string name="fab_night_off">Désactiver le mode nuit</string>
+    <string name="fab_camera_on">Afficher l\'image de la caméra</string>
+    <string name="fab_camera_off">Masquer l\'image de la caméra</string>
+    <string name="fab_manual_on">Passer en navigation au doigt</string>
+    <string name="fab_manual_off">Revenir aux capteurs</string>
+    <string name="fab_settings">Paramètres</string>
+    <string name="compass_good">Boussole précise</string>
+    <string name="compass_medium">Boussole moyenne</string>
+    <string name="compass_poor">Boussole imprécise : décrivez un 8 avec le téléphone</string>
+    <string name="compass_unknown">Précision de la boussole inconnue</string>
+    <string name="compass_manual">Mode manuel : glissez pour tourner, pincez pour zoomer</string>
+    <string name="compass_no_sensor">Pas de capteur d\'orientation : mode manuel</string>
+    <string name="compass_geomagnetic">Sans gyroscope : affichage lissé</string>
+    <string name="warning_manual_time">L\'heure du téléphone est réglée manuellement : une minute d\'écart décale le ciel d\'un quart de degré.</string>
+    <string name="warning_default_location">Position par défaut (Paris) : réglez votre lieu dans les paramètres.</string>
+    <string name="warning_wmm_expired">Le modèle magnétique WMM2025 n\'est plus valide après 2029 : la déclinaison peut être inexacte.</string>
+    <string name="target_direction">Azimut %1$s, hauteur %2$s</string>
+    <string name="target_announcement">%1$s. %2$s</string>
+    <string name="guidance_distance">%1$s à %2$s</string>
+    <string name="guidance_centered">%1$s est centré</string>
+    <string name="guidance_stop">Arrêter le guidage</string>
+    <string name="camera_night_disabled">Le fond caméra est désactivé en mode nuit.</string>
+    <string name="camera_permission_denied">Sans l\'autorisation de la caméra, le ciel s\'affiche sur fond noir.</string>
+    <string name="below_horizon">sous l\'horizon</string>
+
+    <!-- Points cardinaux -->
+    <string name="cardinal_n">N</string>
+    <string name="cardinal_e">E</string>
+    <string name="cardinal_s">S</string>
+    <string name="cardinal_w">O</string>
+
+    <!-- Fiche objet -->
+    <string name="object_type_star">Étoile</string>
+    <string name="object_type_planet">Planète</string>
+    <string name="object_type_sun">Étoile (notre Soleil)</string>
+    <string name="object_type_moon">Satellite naturel de la Terre</string>
+    <string name="object_type_constellation">Constellation</string>
+    <string name="object_constellation">Constellation</string>
+    <string name="object_magnitude">Magnitude</string>
+    <string name="object_distance">Distance</string>
+    <string name="object_distance_ly">%1$s années-lumière</string>
+    <string name="object_distance_pc">%1$s parsecs</string>
+    <string name="object_distance_au">%1$s ua</string>
+    <string name="object_distance_km">%1$s km</string>
+    <string name="object_position">Position actuelle</string>
+    <string name="object_altitude">Hauteur</string>
+    <string name="object_azimuth">Azimut</string>
+    <string name="object_rise">Lever</string>
+    <string name="object_culmination">Culmination</string>
+    <string name="object_set">Coucher</string>
+    <string name="object_circumpolar">Toujours au-dessus de l\'horizon (circumpolaire)</string>
+    <string name="object_never_rises">Ne se lève pas à cette latitude</string>
+    <string name="object_phase">Phase</string>
+    <string name="object_phase_value">%1$s, %2$d %% éclairée</string>
+    <string name="object_designation">Désignation</string>
+    <string name="object_stars_count">%1$d étoiles dans le catalogue</string>
+    <string name="object_guide_to">Me guider vers cet objet</string>
+    <string name="object_unknown">Aucun objet au réticule</string>
+
+    <!-- Recherche -->
+    <string name="search_hint">Orion, Jupiter, Véga…</string>
+    <string name="search_empty">Aucun résultat</string>
+    <string name="search_title">Recherche</string>
+
+    <!-- Couches -->
+    <string name="layers_title">Couches</string>
+    <string name="layer_stars">Étoiles</string>
+    <string name="layer_lines">Figures des constellations</string>
+    <string name="layer_names">Noms</string>
+    <string name="layer_planets">Soleil, Lune et planètes</string>
+    <string name="layer_horizon">Horizon et points cardinaux</string>
+    <string name="layer_ground">Sol assombri</string>
+    <string name="layer_grid">Grille</string>
+    <string name="grid_none">Aucune</string>
+    <string name="grid_azimuthal">Azimutale</string>
+    <string name="grid_equatorial">Équatoriale</string>
+    <string name="layer_magnitude">Magnitude limite : %1$s</string>
+    <string name="preset_city">Ville</string>
+    <string name="preset_country">Campagne</string>
+    <string name="preset_dark">Ciel noir</string>
+    <string name="layer_label_density">Densité des noms</string>
+
+    <!-- Paramètres -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_location">Lieu</string>
+    <string name="settings_location_auto">Position du téléphone</string>
+    <string name="settings_location_manual">Lieu choisi manuellement</string>
+    <string name="settings_location_current">Lieu actuel : %1$s</string>
+    <string name="settings_location_coords">%1$s, %2$s</string>
+    <string name="settings_location_choose">Choisir une ville ou des coordonnées</string>
+    <string name="settings_location_permission">Autoriser la localisation</string>
+    <string name="settings_compass">Boussole</string>
+    <string name="settings_compass_offset">Décalage manuel : %1$s°</string>
+    <string name="settings_compass_calibrate">Caler sur une étoile connue</string>
+    <string name="settings_compass_reset">Annuler le décalage</string>
+    <string name="settings_compass_declination">Déclinaison magnétique calculée (WMM2025) : %1$s°</string>
+    <string name="settings_smoothing">Lissage du mouvement</string>
+    <string name="settings_units">Unités de distance</string>
+    <string name="units_light_years">Années-lumière</string>
+    <string name="units_parsecs">Parsecs</string>
+    <string name="settings_language">Langue</string>
+    <string name="language_system">Langue du système</string>
+    <string name="language_fr">Français</string>
+    <string name="language_en">English</string>
+    <string name="settings_camera_fov">Correction du champ caméra : ×%1$s</string>
+    <string name="settings_about">À propos et licences des données</string>
+    <string name="settings_onboarding_again">Revoir l\'écran d\'accueil</string>
+    <string name="city_dialog_title">Choisir un lieu</string>
+    <string name="city_latitude">Latitude (°, nord positif)</string>
+    <string name="city_longitude">Longitude (°, est positif)</string>
+    <string name="city_invalid">Coordonnées invalides</string>
+    <string name="city_custom">Coordonnées personnalisées</string>
+
+    <!-- Calibration sur une étoile -->
+    <string name="calibrate_title">Caler la boussole</string>
+    <string name="calibrate_text">Centrez une étoile brillante que vous reconnaissez dans le réticule, puis choisissez-la dans la liste : l\'application mesure le décalage d\'azimut et le mémorise.</string>
+    <string name="calibrate_choose">Quelle étoile est au réticule ?</string>
+    <string name="calibrate_done">Décalage enregistré : %1$s°</string>
+
+    <!-- À propos -->
+    <string name="about_title">À propos</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_intro">Carte du ciel en réalité augmentée. Application hors-ligne, sans compte, sans publicité ni accès réseau. Le ciel est calculé, pas filmé.</string>
+    <string name="about_data_title">Données et bibliothèques</string>
+    <string name="about_hyg">Étoiles : base HYG v4.1, David Nash (astronexus.com), licence CC BY-SA 4.0. Le fichier d\'étoiles dérivé embarqué dans l\'application est diffusé sous la même licence.</string>
+    <string name="about_d3">Figures et noms des constellations : d3-celestial, Olaf Frohn, licence BSD 3-Clause.</string>
+    <string name="about_ae">Calculs astronomiques : Astronomy Engine, Don Cross, licence MIT.</string>
+    <string name="about_wmm">Déclinaison magnétique : World Magnetic Model 2025, NOAA/NCEI et British Geological Survey, domaine public.</string>
+    <string name="about_iau">Noms propres d\'étoiles : Union astronomique internationale (groupe de travail WGSN), via la base HYG.</string>
+    <string name="about_licenses_title">Textes des licences</string>
+    <string name="about_privacy_title">Confidentialité</string>
+    <string name="about_privacy">Aucune donnée ne quitte le téléphone. L\'application ne demande pas la permission Internet : vous pouvez le vérifier dans les informations de l\'application.</string>
+    <string name="about_accuracy_title">Précision</string>
+    <string name="about_accuracy">Positions calculées à mieux d\'une minute d\'arc (Astronomy Engine). La précision ressentie dépend surtout de la boussole du téléphone : utilisez l\'indicateur de précision, la calibration en « 8 » et le calage sur une étoile connue.</string>
+</resources>

@@ -52,6 +52,7 @@ class CatalogBuilderTest {
         // Sirius est la première étoile.
         assertEquals("Sirius", c.star(0).properName)
         assertEquals(32349, c.star(0).hip)
+        assertEquals(2.6371, c.star(0).distancePc!!, 1e-3) // valeur du champ dist de HYG v4.1
         // Aucune étoile de magnitude <= 6,5 sans constellation.
         for (i in 0 until c.countUpToMagnitude(6.5)) assertTrue(c.stars.constellation[i] >= 0)
         println(r.report)
