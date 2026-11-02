@@ -35,10 +35,18 @@ Compose/Material 3, mais **pas** les écarts éventuels entre les stubs et les v
 (activity-compose, AppCompat, core, DataStore, CameraX, lifecycle), ni les problèmes
 d'exécution (OpenGL, capteurs, caméra), ni les ressources Android (XML, manifeste).
 
+## Compilation Android réelle (GitHub Actions)
+
+Le workflow `.github/workflows/android.yml` (ubuntu-latest, JDK 17) exécute les tests JVM puis
+`:app:assembleDebug`. Exécution n° 2 du 2 novembre 2026 : tests verts, APK de débogage produit
+(artefact `carte-du-ciel-debug-apk`, archive d'environ 13 Mo). Les versions du catalogue
+(AGP 8.13.0, Kotlin 2.2.20, Compose 1.8.2, Material 3 1.3.2, CameraX 1.4.2, etc.) se résolvent
+donc correctement. La première exécution avait échoué sur un conflit de classpath du plugin
+Kotlin, corrigé en retirant le plugin du fichier racine.
+
 ## Reste à faire (recette §9)
 
-- Compiler avec Android Studio (`./gradlew :app:assembleDebug`) et corriger les erreurs
-  éventuelles.
+- Installer l'APK sur un appareil et dérouler la recette : aucune exécution réelle n'a encore eu lieu.
 - Tests automatisés supplémentaires : comparaison de 20 étoiles et des planètes avec Stellarium
   ou JPL Horizons (2′) — non réalisable hors-ligne ici ; la chaîne a été comparée à la fonction
   de référence de la bibliothèque, elle-même validée contre JPL Horizons par son auteur.

@@ -17,19 +17,22 @@ Ce dépôt met en œuvre le cahier des charges du 1er novembre 2026 (lots 1 à 3
 | `:catalog` — format binaire, modèle, recherche | terminé | 3 tests |
 | `:tools` — construction du catalogue depuis HYG v4.1 et d3-celestial | terminé | 2 tests sur données réelles : 88 constellations, 893 sommets de figures tous appariés (écart max 0,0045°), 8 920 étoiles ≤ 6,5 |
 | `app/src/main/assets/catalog/sky_catalog.bin` | généré (294 Ko, 9 028 étoiles) | relu à l'identique par les tests |
-| `:sensors`, `:render`, `:camera`, `:app` (Android) | code écrit, **non compilé avec le SDK Android** dans l'environnement de développement (voir ci-dessous) | compilation de type réussie (0 erreur, 177 classes) dans un harnais JVM : Compose Multiplatform 1.8.2 + `android.jar` API 36 + stubs AndroidX ; voir `docs/VERIFICATION.md` pour les limites |
+| `:sensors`, `:render`, `:camera`, `:app` (Android) | code écrit ; **APK de débogage construit par GitHub Actions** (`.github/workflows/android.yml`, AGP 8.13.0, compileSdk 36) ; **jamais exécuté sur un appareil** | compilation réelle réussie sur GitHub (exécution n° 2 du workflow) ; auparavant, vérification de type dans un harnais JVM, voir `docs/VERIFICATION.md` |
 
 **Important** : l'environnement dans lequel ce code a été produit n'avait pas accès à
-`dl.google.com` (plugin Android Gradle, bibliothèques AndroidX, SDK Android). Les modules
-Android n'ont donc **pas** pu être compilés ni exécutés sur un appareil. La première ouverture
-dans Android Studio peut révéler des erreurs de compilation à corriger ; les tests sur appareils
-du §9 du cahier des charges restent à faire. Les modules de calcul (`:astro`, `:geomag`,
-`:catalog`, `:tools`) ont, eux, été compilés et testés (33 tests verts).
+`dl.google.com` (plugin Android Gradle, bibliothèques AndroidX, SDK Android). La compilation
+Android a donc été faite par le workflow GitHub Actions du dépôt, qui publie l'APK de débogage
+comme artefact de chaque exécution (onglet *Actions*, artefact `carte-du-ciel-debug-apk`).
+L'application n'a **jamais été exécutée sur un appareil** : les tests sur appareils du §9 du
+cahier des charges restent entièrement à faire. Les modules de calcul (`:astro`, `:geomag`,
+`:catalog`, `:tools`) ont été compilés et testés (33 tests verts, localement et sur GitHub).
 
 ## Construire
 
 Prérequis : Android Studio (ou SDK Android avec `compileSdk 36`), JDK 17 ou plus récent.
-Le wrapper Gradle (8.14.3) est fourni.
+Le wrapper Gradle (8.14.3) est fourni. Sans machine de développement, chaque push déclenche le
+workflow GitHub Actions `Android APK`, qui exécute les tests JVM puis publie l'APK de débogage
+en artefact téléchargeable (conservé 90 jours).
 
 ```bash
 # Application de débogage (génère d'abord le catalogue si tools/data a changé)

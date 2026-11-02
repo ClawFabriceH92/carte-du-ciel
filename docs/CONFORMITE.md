@@ -72,10 +72,11 @@ Modules conformes au tableau du cahier des charges ; OpenGL ES retenu dès le lo
 
 ## Écarts et points ouverts
 
-1. **Compilation Android non effectuée** dans l'environnement de développement (hôte
-   `dl.google.com` bloqué) : à faire en priorité dans Android Studio.
-2. Versions AGP / AndroidX / CameraX du catalogue `gradle/libs.versions.toml` non vérifiées en
-   ligne (versions stables de 2025 connues) ; à aligner sur les versions disponibles.
+1. **Aucune exécution sur appareil** : l'APK est compilé par GitHub Actions, mais l'application
+   n'a jamais été lancée sur un téléphone ; la recette du §9 reste à faire.
+2. Versions AGP / AndroidX / CameraX du catalogue `gradle/libs.versions.toml` : versions stables
+   de 2025, résolues et compilées avec succès sur GitHub ; des versions plus récentes existent
+   probablement.
 3. Champ de vision caméra : estimation à valider sur plusieurs modèles (§4), facteur manuel prévu.
 4. Taille installée < 15 Mo et 60 i/s : à mesurer (§8).
 5. Noms propres d'étoiles : passage à HYG v4.2 pour les 652 noms UAI.
