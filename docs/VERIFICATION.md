@@ -24,10 +24,16 @@ Les artefacts AndroidX n'étant pas téléchargeables, les sources de `:sensors`
 - des déclarations minimales (« stubs ») pour les API sans équivalent JVM : activity-compose,
   AppCompat, core, DataStore, CameraX, `AndroidView`, et des classes `R`/`BuildConfig` générées.
 
+Résultat (2 novembre 2026) : les quatre modules Android (177 classes) compilent sans erreur dans
+ce harnais, avec un seul avertissement (surcharge dépréciée `onStatusChanged`, désormais
+supprimée explicitement). Deux erreurs réelles ont été trouvées et corrigées par ce moyen :
+`setImmersive` masquait une méthode d'`Activity`, et un appel pleinement qualifié de l'extension
+`rotate` de `DrawScope` ne se résolvait pas.
+
 Cette vérification détecte les erreurs de type dans le code de l'application et son usage de
-Compose/Material 3, mais **pas** les écarts éventuels entre les stubs et les vraies API AndroidX,
-ni les problèmes d'exécution (OpenGL, capteurs, caméra). Son résultat est consigné dans le
-rapport de livraison.
+Compose/Material 3, mais **pas** les écarts éventuels entre les stubs et les vraies API AndroidX
+(activity-compose, AppCompat, core, DataStore, CameraX, lifecycle), ni les problèmes
+d'exécution (OpenGL, capteurs, caméra), ni les ressources Android (XML, manifeste).
 
 ## Reste à faire (recette §9)
 

@@ -17,7 +17,7 @@ Ce dépôt met en œuvre le cahier des charges du 1er novembre 2026 (lots 1 à 3
 | `:catalog` — format binaire, modèle, recherche | terminé | 3 tests |
 | `:tools` — construction du catalogue depuis HYG v4.1 et d3-celestial | terminé | 2 tests sur données réelles : 88 constellations, 893 sommets de figures tous appariés (écart max 0,0045°), 8 920 étoiles ≤ 6,5 |
 | `app/src/main/assets/catalog/sky_catalog.bin` | généré (294 Ko, 9 028 étoiles) | relu à l'identique par les tests |
-| `:sensors`, `:render`, `:camera`, `:app` (Android) | code écrit, **non compilé avec le SDK Android** dans l'environnement de développement (voir ci-dessous) | vérification de type partielle par un harnais JVM (Compose Multiplatform + `android.jar`), voir `docs/VERIFICATION.md` |
+| `:sensors`, `:render`, `:camera`, `:app` (Android) | code écrit, **non compilé avec le SDK Android** dans l'environnement de développement (voir ci-dessous) | compilation de type réussie (0 erreur, 177 classes) dans un harnais JVM : Compose Multiplatform 1.8.2 + `android.jar` API 36 + stubs AndroidX ; voir `docs/VERIFICATION.md` pour les limites |
 
 **Important** : l'environnement dans lequel ce code a été produit n'avait pas accès à
 `dl.google.com` (plugin Android Gradle, bibliothèques AndroidX, SDK Android). Les modules

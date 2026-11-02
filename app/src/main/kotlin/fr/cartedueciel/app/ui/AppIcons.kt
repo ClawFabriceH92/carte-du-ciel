@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.unit.dp
 
 /**
@@ -96,7 +97,7 @@ object AppIcons {
         Canvas(modifier.size(48.dp)) {
             val w = size.width
             val c = Offset(w / 2, w / 2)
-            androidx.compose.ui.graphics.drawscope.rotate(angleDeg, c) {
+            rotate(angleDeg, c) {
                 val p = Path().apply {
                     moveTo(c.x, w * 0.08f)
                     lineTo(c.x + w * 0.3f, w * 0.62f)

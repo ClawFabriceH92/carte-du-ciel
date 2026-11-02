@@ -70,7 +70,9 @@ class CoarseLocationProvider(private val context: Context) {
                     override fun onLocationChanged(location: Location) {
                         if (cont.isActive) cont.resume(location.toGeoPosition())
                     }
+                    // Abstraite jusqu'à l'API 28, dépréciée depuis l'API 29 : l'implémentation vide reste nécessaire pour minSdk 26.
                     @Deprecated("Deprecated in Java")
+                    @Suppress("OVERRIDE_DEPRECATION")
                     override fun onStatusChanged(provider: String?, status: Int, extras: android.os.Bundle?) = Unit
                     override fun onProviderEnabled(provider: String) = Unit
                     override fun onProviderDisabled(provider: String) {

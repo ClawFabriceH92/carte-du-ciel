@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             CarteDuCielApp(
                 viewModel = viewModel,
-                setImmersive = { immersive -> setImmersive(immersive) },
+                setImmersive = { immersive -> applyImmersiveMode(immersive) },
             )
         }
     }
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.refreshLanguageDependentData()
     }
 
-    private fun setImmersive(immersive: Boolean) {
+    private fun applyImmersiveMode(immersive: Boolean) {
         val controller = WindowInsetsControllerCompat(window, window.decorView)
         controller.isAppearanceLightStatusBars = false
         controller.isAppearanceLightNavigationBars = false
