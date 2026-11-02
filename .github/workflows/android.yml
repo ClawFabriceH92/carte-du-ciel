@@ -1,0 +1,45 @@
+# Construit l'APK de débogage à chaque push et le publie comme artefact (onglet Actions du dépôt).
+# Les machines GitHub « ubuntu-latest » disposent du SDK Android ; AGP télécharge les composants manquants.
+name: Android APK
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle (cache)
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Tests des modules de calcul (sans SDK Android)
+        run: ./gradlew -Pcdc.jvmOnly=true test --no-daemon --console=plain
+
+      - name: Compiler l'APK de débogage
+        run: ./gradlew :app:assembleDebug --no-daemon --console=plain
+
+      - name: Publier l'APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: carte-du-ciel-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+
+      - name: Publier les rapports de tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapports-de-tests
+          path: '**/build/reports/tests/test/'
+          if-no-files-found: ignore
