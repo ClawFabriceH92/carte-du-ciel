@@ -15,8 +15,6 @@ android {
         versionCode = 1
         versionName = "0.1.0"
         vectorDrawables.useSupportLibrary = true
-        // Français par défaut, anglais en option : pas d'autres ressources de langue.
-        resourceConfigurations += listOf("fr", "en")
     }
 
     buildTypes {

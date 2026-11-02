@@ -66,7 +66,6 @@ fun SettingsScreen(viewModel: SkyViewModel) {
     val s by viewModel.settings.collectAsStateWithLifecycle()
     val location by viewModel.location.collectAsStateWithLifecycle()
     val hud by viewModel.hud.collectAsStateWithLifecycle()
-    val context = LocalContext.current
     val locationLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         if (granted) viewModel.refreshLocation()
     }
@@ -153,7 +152,6 @@ fun SettingsScreen(viewModel: SkyViewModel) {
             Spacer(Modifier.height(24.dp))
         }
     }
-    @Suppress("UNUSED_VARIABLE") val unusedContext = context
 }
 
 @Composable
