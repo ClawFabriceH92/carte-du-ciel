@@ -6,6 +6,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,6 +38,22 @@ jobs:
           name: carte-du-ciel-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+
+      # Téléchargement direct : pré-version « debug-latest » recréée à chaque compilation réussie.
+      # URL stable : https://github.com/<propriétaire>/<dépôt>/releases/download/debug-latest/carte-du-ciel-debug.apk
+      - name: Publier l'APK en téléchargement direct (pré-version debug-latest)
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk carte-du-ciel-debug.apk
+          gh release delete debug-latest --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
+          gh release create debug-latest carte-du-ciel-debug.apk \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --prerelease \
+            --title "APK de débogage (dernière compilation)" \
+            --notes "Compilation automatique du commit $GITHUB_SHA (branche $GITHUB_REF_NAME). APK de débogage signé avec la clé de débogage, non testé sur appareil."
 
       - name: Publier les rapports de tests
         if: always()
