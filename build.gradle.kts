@@ -1,6 +1,6 @@
-// Fichier racine volontairement minimal : chaque module déclare ses propres plugins
-// via le catalogue de versions (gradle/libs.versions.toml). Les plugins Android ne
-// sont résolus que lorsqu'un module Android est inclus (voir settings.gradle.kts).
-plugins {
-    alias(libs.plugins.kotlin.jvm) apply false
-}
+// Fichier racine volontairement vide de plugins : chaque module déclare les siens via le catalogue
+// de versions (gradle/libs.versions.toml). Déclarer ici le plugin Kotlin (même avec `apply false`)
+// placerait son artefact sur le classpath racine et ferait échouer la résolution de
+// `org.jetbrains.kotlin.android` dans les modules Android (« plugin already on the classpath with
+// an unknown version »). Les plugins Android ne sont résolus que si un module Android est inclus
+// (voir settings.gradle.kts).
